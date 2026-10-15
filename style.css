@@ -785,6 +785,12 @@ main > section:not(.hero) { position: relative; z-index: 1; background-color: va
   color: var(--muted); font-size: 0.9rem;
 }
 .site-footer p { margin: 0; }
+.contact-alt { margin-top: -0.4em; font-size: 0.95rem; color: var(--muted); }
+.contact-alt a { color: var(--pink); text-decoration: none; border-bottom: 1px solid rgba(255, 92, 184, 0.5); }
+.contact-alt a:hover { border-bottom-color: var(--pink); }
+.footer-link { color: var(--pink); text-decoration: none; }
+.footer-link:hover { text-decoration: underline; }
+.form-status a { color: var(--pink); }
 .credit { font-size: 0.75rem; margin-top: 8px !important; }
 .credit a { color: inherit; }
 .footer-note { margin-bottom: 14px !important; }

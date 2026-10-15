@@ -106,8 +106,20 @@ Object.keys(rules).forEach((name) => {
   });
 });
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/ivey-becker/";
+
+// Status line under the form; "LinkedIn" in the message becomes a real link
 function setStatus(text, type) {
-  statusEl.textContent = text;
+  statusEl.textContent = "";
+  const parts = text.split("LinkedIn");
+  parts.forEach((part, i) => {
+    statusEl.append(part);
+    if (i < parts.length - 1) {
+      const a = document.createElement("a");
+      a.href = LINKEDIN_URL; a.target = "_blank"; a.rel = "noopener"; a.textContent = "LinkedIn";
+      statusEl.append(a);
+    }
+  });
   statusEl.className = "form-status" + (type ? " " + type : "");
 }
 
