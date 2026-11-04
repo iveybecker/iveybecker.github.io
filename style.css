@@ -142,13 +142,15 @@ a { color: var(--accent); }
 .header-inner { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; }
 
 .brand {
+  white-space: nowrap;
   display: inline-flex; align-items: center; gap: 10px;
   font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
 }
 .bow { width: 30px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .bow circle { fill: var(--accent); stroke: none; }
 
-.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 30px; }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); }
+.site-nav a { white-space: nowrap; }
 .site-nav a {
   position: relative;
   color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500;
@@ -474,7 +476,7 @@ main > section:not(.hero) { position: relative; z-index: 1; background-color: va
   font-family: "Great Vibes", cursive;
   font-size: 2.8em;
   line-height: 0;
-  vertical-align: -0.2em;
+  vertical-align: -0.42em;
   margin-left: 0.06em;
   color: var(--accent);
 }
@@ -634,7 +636,7 @@ main > section:not(.hero) { position: relative; z-index: 1; background-color: va
   padding-right: clamp(20px, 9vw, 140px);
 }
 @media (max-width: 760px) {
-  .credits-ut { place-items: end center; padding: 60px 20px 48px; background-position: 38% 20%, 38% 20%; }
+  .credits.credits-ut { place-items: end center; padding: 60px 20px 48px; background-position: 38% 20%, 38% 20%; }
 }
 
 .ex-grid {
@@ -835,7 +837,7 @@ main > section:not(.hero) { position: relative; z-index: 1; background-color: va
   .hero { background-position: 38% 42%; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .burger { display: block; }
 
   .site-nav {
@@ -846,7 +848,7 @@ main > section:not(.hero) { position: relative; z-index: 1; background-color: va
     max-height: 0; overflow: hidden; visibility: hidden;
     transition: max-height 0.3s ease, visibility 0.3s;
   }
-  .site-nav.open { max-height: 460px; visibility: visible; }
+  .site-nav.open { max-height: 560px; visibility: visible; }
   .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 24px; }
   .site-nav a { display: block; padding: 14px 4px; font-size: 1.05rem; border-bottom: 1px solid var(--line); }
   .site-nav a:not(.nav-cta)::after { left: auto; right: 6px; bottom: 50%; transform: translateY(50%) scale(0); }
@@ -864,3 +866,23 @@ main > section:not(.hero) { position: relative; z-index: 1; background-color: va
   .sparkle, .scroll-cue span { animation: none; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* ---------- Homepage links to the two separate pages ---------- */
+.next-reads { padding: clamp(48px, 7vw, 80px) 0; }
+.next-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.next-link { display: block; padding: 30px 32px 30px 0; text-decoration: none; transition: background 0.2s; }
+.next-link + .next-link { padding-left: 32px; padding-right: 0; border-left: 1px solid var(--line); }
+.next-kicker { display: block; margin-bottom: 8px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.next-title { font-family: var(--display); font-size: clamp(1.35rem, 2.6vw, 1.9rem); line-height: 1.2; color: var(--ink-strong); transition: color 0.2s; }
+.next-link:hover .next-title { color: var(--accent); }
+@media (max-width: 760px) {
+  .next-grid { grid-template-columns: 1fr; }
+  .next-link, .next-link + .next-link { padding: 24px 0; border-left: 0; }
+  .next-link + .next-link { border-top: 1px solid var(--line); }
+}
+
+/* ---------- Separate pages ---------- */
+body.subpage .credits { padding-top: calc(var(--header-h) + 40px); min-height: clamp(420px, 68vh, 660px); }
+.back-home { position: relative; z-index: 1; padding: 0 0 clamp(48px, 7vw, 80px); }
+.back-home a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.back-home a:hover { text-decoration: underline; }

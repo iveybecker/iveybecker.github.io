@@ -27,7 +27,7 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener("click", (e) => {
   if (nav.classList.contains("open") && !header.contains(e.target)) setMenu(false);
 });
-window.matchMedia("(min-width: 761px)").addEventListener("change", (e) => {
+window.matchMedia("(min-width: 901px)").addEventListener("change", (e) => {
   if (e.matches) setMenu(false);
 });
 
@@ -57,10 +57,12 @@ sections.forEach((s) => observer.observe(s));
 
 // Clear the highlight when back at the hero
 const hero = document.getElementById("top");
-new IntersectionObserver(
-  ([entry]) => { if (entry.isIntersecting) navLinks.forEach((a) => a.classList.remove("active")); },
-  { rootMargin: "-45% 0px -50% 0px" }
-).observe(hero);
+if (hero) {
+  new IntersectionObserver(
+    ([entry]) => { if (entry.isIntersecting) navLinks.forEach((a) => a.classList.remove("active")); },
+    { rootMargin: "-45% 0px -50% 0px" }
+  ).observe(hero);
+}
 
 // ===== Experience timeline: fade cards in as you scroll =====
 const tlItems = document.querySelectorAll(".tl-item");
@@ -80,6 +82,7 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
 
 // ===== Contact form =====
 const form = document.getElementById("contact-form");
+if (form) {
 const statusEl = document.getElementById("form-status");
 const submitBtn = form.querySelector('button[type="submit"]');
 
@@ -168,5 +171,6 @@ form.addEventListener("submit", async (e) => {
     submitBtn.textContent = "Submit";
   }
 });
+}
 
 document.getElementById("year").textContent = new Date().getFullYear();
